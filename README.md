@@ -125,8 +125,10 @@ Follow these steps to run the project on your local machine.
 ### 1️⃣ Clone the repository
 
 ### bash
-git clone https://github.com/yourusername/Social-Media-Ad-Click-Predictor.git
+git clone[ https://github.com/yourusername/Social-Media-Ad-Click-Predictor.git](https://github.com/himanshu-fzr/Social-Media-Ad-Click-Prediction.git)
+
 cd Social-Media-Ad-Click-Prediction2
+
 ----
 
 ## 🔮 Future Improvements
