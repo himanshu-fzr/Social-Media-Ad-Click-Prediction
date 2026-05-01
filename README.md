@@ -13,16 +13,27 @@
 ## 📌 Table of Contents
 
 - [Overview](#overview)
+
 - [Features](#features)
+
 - [Tech Stack](#tech-stack)
+
 - [Dataset Description](#dataset-description)
+
 - [Project Structure](#project-structure)
+
 - [Installation](#installation)
+
 - [Usage](#usage)
+
 - [Model Training](#model-training)
+
 - [Results & Performance](#results--performance)
+
 - [Screenshots](#screenshots)
+
 - [Future Improvements](#future-improvements)
+
 - [License](#license)
 
 ---
@@ -38,11 +49,17 @@ The final output is an interactive **Streamlit web application** where users can
 ## ✨ Features
 
 - ✅ **Generate synthetic dataset** (30,000 samples) with realistic user features.
+
 - ✅ **Train Logistic Regression** model with feature scaling.
+
 - ✅ **Interactive web app** with sliders, radio buttons, and real-time prediction.
+
 - ✅ **Interpretable ML** – Shows feature importance (coefficients) and model performance.
+
 - ✅ **Download predictions** as CSV for further analysis.
+
 - ✅ **Professional UI** with gradients, animations, and responsive layout.
+
 - ✅ **No functions / No OOP** – Simple sequential code, perfect for beginners.
 
 ---
@@ -86,11 +103,17 @@ The dataset contains **30,000 synthetic user records** with the following featur
 
 Social_Media_Ad_Click_Prediction/
 │
+
 ├── generate_ad_data.py # Generate synthetic dataset (30k rows)
+
 ├── train_ad_model.py # Train logistic regression & save model
+
 ├── app.py # Streamlit web application
+
 ├── ad_click_data.csv # Generated dataset (after running step 1)
+
 ├── ad_model.pkl # Trained logistic regression model
+
 ├── ad_scaler.pkl # Fitted StandardScaler
 
 ---
@@ -98,14 +121,14 @@ Social_Media_Ad_Click_Prediction/
 ## ⚙️ Installation
 
 Follow these steps to run the project on your local machine.
+
 ### 1️⃣ Clone the repository
 
-```
 ### bash
 git clone https://github.com/yourusername/Social-Media-Ad-Click-Predictor.git
 cd Social-Media-Ad-Click-Prediction2
-
 ----
+
 ## 🔮 Future Improvements
 Add more advanced models (Random Forest, XGBoost) for comparison.
 
@@ -122,3 +145,16 @@ Add user authentication to save prediction history.
 This project is licensed under the MIT License – you are free to use, modify, and distribute it for personal or commercial purposes.
 
 ---
+📬 Contact
+Himanshu
+
+📧 [Gmail](himanshush0013@gmail.com)
+
+🔗 [Linkdin](https://www.linkedin.com/in/himanshusharmafzr)
+
+🐙 [GitHub](https://github.com/himanshu-fzr)
+
+---
+⭐ Show your support
+
+Give a ⭐ if this project helped you!
