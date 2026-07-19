@@ -1,163 +1,89 @@
-# 📱 Social Media Ad Click Predictor
+# Social Media Ad Click Predictor
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red.svg)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)
 
-> **Predict whether a user will click on a social media ad using Logistic Regression. Interactive web app built with Streamlit.**
+Predicts whether a user will click on a social media ad, using Logistic Regression — deployed as an interactive Streamlit web app.
 
----
+## Overview
 
-## 📌 Table of Contents
+An end-to-end machine learning project: from synthetic data generation, through model training, to a deployed interactive web application. Users can input demographic and behavioral data and get a real-time click prediction with interpretable model insights (feature coefficients).
 
-- [Overview](#overview)
+## Dataset
 
-- [Features](#features)
+Generated a synthetic dataset of 30,000 user profiles using a logistic probability model, to control feature-target relationships and validate the full pipeline end-to-end before working with real ad-click data.
 
-- [Tech Stack](#tech-stack)
+| Feature | Description |
+|---|---|
+| Age | 18–70 years |
+| Gender | Male / Female |
+| Income (kUSD) | Annual income, 20–200k |
+| Time Spent (min) | Daily platform usage |
+| Previous Clicks | Ad clicks in the last 30 days |
+| Device Type | Desktop / Mobile |
+| Ad Topic | Tech, Fashion, Sports, Food |
+| Spending Score | 0–100 |
+| Engagement Rate | 0–100 |
+| Ad Frequency | Ads seen per day |
+| **Click (Target)** | Whether the user clicked (Yes/No) |
 
-- [Dataset Description](#dataset-description)
+## Approach
 
-- [Project Structure](#project-structure)
+1. Generated and cleaned the synthetic dataset (`generate_ad_data.py`)
+2. Scaled features using `StandardScaler`
+3. Trained a Logistic Regression classifier (`train_ad_model.py`)
+4. Evaluated using accuracy, precision, recall, and F1-score
+5. Built an interactive Streamlit app (`app.py`) for real-time predictions, with feature-importance visualization and CSV export of results
+6. Serialized the trained model and scaler with pickle for reuse in the app
 
-- [Installation](#installation)
+## Results
 
-- [Usage](#usage)
+| Metric | Score |
+|---|---|
+| Accuracy | **[ADD ACCURACY HERE]** |
+| Precision | [ADD] |
+| Recall | [ADD] |
+| F1-score | [ADD] |
 
-- [Model Training](#model-training)
+## Tech Stack
 
-- [Results & Performance](#results--performance)
+Python · Pandas · NumPy · Scikit-learn (Logistic Regression, StandardScaler) · Streamlit · Matplotlib · Seaborn
 
-- [Screenshots](#screenshots)
+## Project Structure
 
-- [Future Improvements](#future-improvements)
+```
+Social-Media-Ad-Click-Prediction/
+├── generate_ad_data.py   # Generate synthetic dataset (30k rows)
+├── train_ad_model.py     # Train Logistic Regression & save model
+├── app.py                # Streamlit web application
+├── ad_click_data.csv     # Generated dataset
+├── ad_model.pkl          # Trained model
+├── ad_scaler.pkl         # Fitted StandardScaler
+└── requirements.txt
+```
 
-- [License](#license)
+## How to Run
 
----
+```bash
+git clone https://github.com/himanshu-fzr/Social-Media-Ad-Click-Prediction.git
+cd Social-Media-Ad-Click-Prediction
+pip install -r requirements.txt
 
-## 🔍 Overview
+python generate_ad_data.py    # generate the dataset
+python train_ad_model.py      # train and save the model
+streamlit run app.py          # launch the web app
+```
 
-This project demonstrates an end-to-end **machine learning pipeline** for predicting ad clicks on social media platforms. Using a synthetic dataset of 30,000 user profiles, we train a **Logistic Regression** model to classify whether a user is likely to click on an ad based on demographic, behavioral, and content features.
+## What I'd improve next
 
-The final output is an interactive **Streamlit web application** where users can input their own data and receive real-time predictions with interpretable insights.
+- Compare against tree-based models (Random Forest, XGBoost)
+- Replace synthetic data with a real-world ad-click dataset (e.g. from Kaggle)
+- Add SHAP-based explainability for individual predictions
+- Deploy on Streamlit Cloud for a live public demo
 
----
+## Contact
 
-## ✨ Features
-
-- ✅ **Generate synthetic dataset** (30,000 samples) with realistic user features.
-
-- ✅ **Train Logistic Regression** model with feature scaling.
-
-- ✅ **Interactive web app** with sliders, radio buttons, and real-time prediction.
-
-- ✅ **Interpretable ML** – Shows feature importance (coefficients) and model performance.
-
-- ✅ **Download predictions** as CSV for further analysis.
-
-- ✅ **Professional UI** with gradients, animations, and responsive layout.
-
-- ✅ **No functions / No OOP** – Simple sequential code, perfect for beginners.
-
----
-
-## 🛠️ Tech Stack
-
-| Tool/Library       | Purpose                          |
-|--------------------|----------------------------------|
-| Python 3.8+        | Core programming language       |
-| Pandas             | Data manipulation & storage      |
-| NumPy              | Numerical operations             |
-| Scikit-learn       | Logistic Regression, scaling, metrics |
-| Streamlit          | Web application framework        |
-| Matplotlib / Seaborn | Data visualization & charts   |
-
----
-
-## 📊 Dataset Description
-
-The dataset contains **30,000 synthetic user records** with the following features:
-
-| Feature               | Type      | Description                                           |
-|-----------------------|-----------|-------------------------------------------------------|
-| Age                   | Integer   | 18–70 years                                           |
-| Gender                | Binary    | 0 = Female, 1 = Male                                  |
-| Income_kUSD           | Integer   | Annual income (20–200 kUSD)                          |
-| TimeSpent_min         | Integer   | Minutes spent on platform per day (0–300)            |
-| PrevClicks            | Integer   | Number of ad clicks in last 30 days (0–50)           |
-| DeviceType            | Binary    | 0 = Desktop, 1 = Mobile                               |
-| AdTopic               | Categorical | 0 = Tech, 1 = Fashion, 2 = Sports, 3 = Food       |
-| SpendingScore         | Integer   | 0–100 (user purchasing tendency)                     |
-| EngagementRate        | Integer   | 0–100 (user engagement with content)                 |
-| AdFrequency           | Integer   | Ads seen per day (1–30)                              |
-| **Click (Target)**    | Binary    | 0 = No click, 1 = Click                              |
-
-> ⚠️ The dataset is **synthetic** and generated using a logistic probability model to ensure realistic relationships between features and the target.
-
----
-
-## 📁 Project Structure
-
-Social_Media_Ad_Click_Prediction/
-│
-
-├── generate_ad_data.py # Generate synthetic dataset (30k rows)
-
-├── train_ad_model.py # Train logistic regression & save model
-
-├── app.py # Streamlit web application
-
-├── ad_click_data.csv # Generated dataset (after running step 1)
-
-├── ad_model.pkl # Trained logistic regression model
-
-├── ad_scaler.pkl # Fitted StandardScaler
-
----
-
-## ⚙️ Installation
-
-Follow these steps to run the project on your local machine.
-
-### 1️⃣ Clone the repository
-
-### bash
-git clone[ https://github.com/yourusername/Social-Media-Ad-Click-Predictor.git](https://github.com/himanshu-fzr/Social-Media-Ad-Click-Prediction.git)
-
-cd Social-Media-Ad-Click-Prediction2
-
-----
-
-## 🔮 Future Improvements
-Add more advanced models (Random Forest, XGBoost) for comparison.
-
-Integrate real-world ad click data (e.g., from Kaggle).
-
-Add SHAP explainability plots.
-
-Deploy the app on Streamlit Cloud.
-
-Add user authentication to save prediction history.
-
----
-📄 License
-
-This project is licensed under the MIT License – you are free to use, modify, and distribute it for personal or commercial purposes.
-
----
-📬 Contact
-Himanshu
-
-📧 [Gmail](himanshush0013@gmail.com)
-
-🔗 [Linkdin](https://www.linkedin.com/in/himanshusharmafzr)
-
-🐙 [GitHub](https://github.com/himanshu-fzr)
-
----
-⭐ Show your support
-
-Give a ⭐ if this project helped you!
+**Himanshu Sharma**
+📧 himanshush0013@gmail.com · 🔗 [LinkedIn](https://www.linkedin.com/in/himanshusharmafzr) · 🐙 [GitHub](https://github.com/himanshu-fzr)
